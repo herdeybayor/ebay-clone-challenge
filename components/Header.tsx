@@ -111,6 +111,25 @@ function Header({}: Props) {
                     </Link>
                 </section>
                 <hr />
+
+                <section className="flex py-3 space-x-6 text-xs md:text-sm whitespace-nowrap justify-center px-6">
+                    <p className="link">Home</p>
+                    <p className="link">Electronics</p>
+                    <p className="link">Computers</p>
+                    <p className="link hidden lg:inline-flex">Video Games</p>
+                    <p className="link hidden lg:inline-flex">Home & Garden</p>
+                    <p className="link hidden md:inline-flex">
+                        Health & Beauty
+                    </p>
+                    <p className="link hidden md:inline-flex">
+                        Collectibles and Art
+                    </p>
+                    <p className="link hidden md:inline-flex">Books</p>
+                    <p className="link hidden md:inline-flex">Music</p>
+                    <p className="link hidden xl:inline-flex">Deals</p>
+                    <p className="link hidden lg:inline-flex">Other</p>
+                    <p className="link">More</p>
+                </section>
             </div>
 
             {/* Connect to Wallet Modal */}
