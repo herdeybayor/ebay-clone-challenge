@@ -4,13 +4,16 @@ import {
     useContract,
     MediaRenderer,
 } from "@thirdweb-dev/react";
-
+import { Metronome } from "@uiball/loaders";
 import { BanknotesIcon, ClockIcon } from "@heroicons/react/24/outline";
 
 import { Header } from "../components";
 import { ListingType } from "@thirdweb-dev/sdk";
+import { useTheme } from "next-themes";
 
 const Home: NextPage = () => {
+    const { theme, systemTheme } = useTheme();
+
     const { contract } = useContract(
         process.env.NEXT_PUBLIC_MARKETPLACE_CONTRACT,
         "marketplace"
@@ -24,8 +27,20 @@ const Home: NextPage = () => {
 
             <main className="max-w-6xl mx-auto p-2">
                 {loadingListings ? (
-                    <div className="text-center animate-pulse text-blue-500">
-                        Loading listings...
+                    <div className="flex flex-col items-center justify-center mt-10">
+                        <Metronome
+                            size={80}
+                            speed={1.6}
+                            color={
+                                (theme === "system" ? systemTheme : theme) ===
+                                "dark"
+                                    ? "white"
+                                    : "black"
+                            }
+                        />
+                        <h4 className="font-semibold text-xl text-gray-800 dark:text-white/80 animate-pulse">
+                            Loading listings...
+                        </h4>
                     </div>
                 ) : (
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mx-5 lg:mx-auto">
