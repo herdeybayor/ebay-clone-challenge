@@ -67,7 +67,6 @@ function useMint() {
             const tokenId = tx.id;
             const nft = await tx.data();
 
-            console.log(receipt, tokenId, nft);
             setIsMinting(false);
             refetchNtfs();
             toast.dismiss();

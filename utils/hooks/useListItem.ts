@@ -81,12 +81,10 @@ function useListItem({ refetchListing }: Props) {
                         toast.success("Direct listing created");
                         refetchListing();
                         closeListItem();
-                        console.log({ data, variable, context });
                     },
                     onError: (error, variable, context) => {
                         toast.dismiss();
                         toast.error("Failed to create direct listing");
-                        console.log({ error, variable, context });
                     },
                 }
             );
@@ -112,18 +110,14 @@ function useListItem({ refetchListing }: Props) {
                         toast.success("Auction listing created");
                         refetchListing();
                         closeListItem();
-                        console.log({ data, variable, context });
                     },
                     onError: (error, variable, context) => {
                         toast.dismiss();
                         toast.error("Failed to create auction listing");
-                        console.log({ error, variable, context });
                     },
                 }
             );
         }
-
-        console.log({ selectedNft, price, listingType });
     };
 
     return {
