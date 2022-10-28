@@ -10,6 +10,7 @@ interface Props {
     onModalClose?: () => void;
     onSuccessClick?: () => void;
     successBtnText?: string;
+    isLoading?: boolean;
 }
 
 export type ModalHandle = {
@@ -18,7 +19,14 @@ export type ModalHandle = {
 };
 
 const DrawerModal: React.ForwardRefRenderFunction<ModalHandle, Props> = (
-    { children, headerText, onModalClose, onSuccessClick, successBtnText },
+    {
+        children,
+        headerText,
+        onModalClose,
+        onSuccessClick,
+        successBtnText,
+        isLoading,
+    },
     ref
 ) => {
     const [modalIsOpen, setModalIsOpen] = React.useState<boolean>(false);
@@ -116,7 +124,8 @@ const DrawerModal: React.ForwardRefRenderFunction<ModalHandle, Props> = (
                         onClick={() => {
                             onSuccessClick?.();
                         }}
-                        className="outline-none px-5 font-medium border-2 border-blue-500 py-2 rounded-md text-white bg-blue-500"
+                        className="outline-none px-5 font-medium border-2 border-blue-500 py-2 rounded-md text-white bg-blue-500 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-blue-600 transition-colors duration-200"
+                        disabled={isLoading}
                     >
                         {successBtnText || "Add"}
                     </button>

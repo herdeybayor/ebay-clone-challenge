@@ -1,6 +1,8 @@
 import Head from "next/head";
 import { ThemeProvider } from "next-themes";
 import { ThirdwebProvider } from "@thirdweb-dev/react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import network from "../utils/network";
 import "../styles/globals.css";
@@ -16,6 +18,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                     <link rel="icon" href="/favicon.ico" />
                 </Head>
                 <Component {...pageProps} />
+                <ToastContainer />
             </ThemeProvider>
         </ThirdwebProvider>
     );

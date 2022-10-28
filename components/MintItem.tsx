@@ -1,10 +1,23 @@
 import { InformationCircleIcon, PhotoIcon } from "@heroicons/react/24/outline";
 import React from "react";
 
-type Props = {};
+type Props = {
+    image: File | null;
+    setImage: (image: File | null) => void;
+    name: string;
+    setName: (name: string) => void;
+    description: string;
+    setDescription: (description: string) => void;
+};
 
-function MintItem({}: Props) {
-    const [image, setImage] = React.useState<File | null>(null);
+function MintItem({
+    image,
+    setImage,
+    name,
+    setName,
+    description,
+    setDescription,
+}: Props) {
     const [imageUrl, setImageUrl] = React.useState<string | null>(null);
 
     const onFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -64,31 +77,37 @@ function MintItem({}: Props) {
                 {/* Name */}
                 <div>
                     <label
-                        htmlFor="first_name"
+                        htmlFor="name"
                         className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                     >
                         Name of Item
                     </label>
                     <input
                         type="text"
-                        id="first_name"
+                        id="name"
+                        name="name"
+                        onChange={(e) => setName(e.target.value)}
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="John"
+                        placeholder="Sonny"
+                        value={name}
                         required
                     />
                 </div>
                 <div>
                     <label
-                        htmlFor="last_name"
+                        htmlFor="description"
                         className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                     >
                         Description
                     </label>
                     <input
                         type="text"
-                        id="last_name"
+                        id="description"
+                        name="description"
+                        onChange={(e) => setDescription(e.target.value)}
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Doe"
+                        placeholder="Sangha"
+                        value={description}
                         required
                     />
                 </div>
