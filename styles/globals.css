@@ -19,3 +19,40 @@
         @apply border border-gray-200 dark:border-gray-700 rounded-md shadow-md bg-gray-50 dark:bg-gray-800 cursor-pointer hover:bg-gray-100 p-5;
     }
 }
+
+/* react-modal */
+.ReactModal__Body--open {
+    overflow: hidden;
+}
+
+.ReactModal__Overlay {
+    opacity: 0;
+    transition: opacity 300ms linear;
+}
+
+.ReactModal__Overlay--after-open {
+    opacity: 1;
+}
+
+.ReactModal__Overlay--before-close {
+    opacity: 0;
+}
+
+.ReactModal__Content {
+    transform: translateX(100%);
+    transition: transform 500ms ease-in-out;
+}
+
+.ReactModal__Content--after-open {
+    transform: translateX(0);
+}
+
+.ReactModal__Content--before-close {
+    transform: translateX(100%);
+}
+
+/* next-themes */
+.dark {
+    color: #fff;
+    background: #0f1217;
+}

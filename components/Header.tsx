@@ -7,13 +7,15 @@ import {
     HiOutlineBell,
     HiOutlineShoppingCart,
     HiOutlineChevronDown,
+    HiOutlinePlus,
 } from "react-icons/hi";
 
 import { SlMagnifier } from "react-icons/sl";
 
-import Modal, { ModalHandle } from "./Modal";
+import Modal, { ModalHandle } from "./Modal/Modal";
 import ThemeToggler from "./ThemeToggler";
 import ConnectModalContent from "./ConnectModalContent";
+import { DrawerModal } from ".";
 
 type Props = {};
 
@@ -21,6 +23,7 @@ function Header({}: Props) {
     const address = useAddress();
 
     const modalRef = React.useRef<ModalHandle>(null);
+    const drawerModalRef = React.useRef<ModalHandle>(null);
 
     const openModal = () => {
         modalRef.current?.openModal();
@@ -52,18 +55,20 @@ function Header({}: Props) {
 
                     <ThemeToggler />
 
-                    <div className="flex item-center space-x-4 text-sm">
+                    <div className="flex items-center space-x-4 text-sm">
                         <p className="headerLink">Ship to</p>
                         <p className="headerLink">Sell</p>
                         <p className="headerLink">Watchlist</p>
 
-                        <Link
-                            href="/addItem"
-                            className="flex items-center hover:link"
+                        <button
+                            onClick={() => drawerModalRef.current?.openModal()}
+                            className="flex space-x-1 justify-center items-center bg-transparent text-blue-500 border-2 border-blue-500 hover:bg-blue-500 hover:text-white p-2  md:px-3 md:py-1 transition-colors duration-200"
                         >
-                            Add to Inventory{" "}
-                            <HiOutlineChevronDown className="text-base" />
-                        </Link>
+                            <span className="hidden md:inline-flex">
+                                Add to Inventory
+                            </span>
+                            <HiOutlinePlus className="text-base" />
+                        </button>
 
                         <HiOutlineBell className="text-2xl cursor-pointer hover:scale-125 transition" />
                         <HiOutlineShoppingCart className="text-2xl cursor-pointer hover:scale-125 transition" />
@@ -139,6 +144,14 @@ function Header({}: Props) {
                     closeModal={closeModal}
                 />
             </Modal>
+
+            {/* Drawer Modal */}
+            <DrawerModal
+                headerText="Add an Item to the Marketplace"
+                ref={drawerModalRef}
+            >
+                <h1>Hello World</h1>
+            </DrawerModal>
         </>
     );
 }

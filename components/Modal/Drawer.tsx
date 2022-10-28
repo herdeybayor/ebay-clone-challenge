@@ -5,7 +5,7 @@ import { IoMdClose } from "react-icons/io";
 import { useTheme } from "next-themes";
 
 interface Props {
-    noCancelButton?: boolean;
+    headerText: string;
     children: React.ReactNode;
     onModalClose?: () => void;
 }
@@ -15,8 +15,8 @@ export type ModalHandle = {
     closeModal: () => void;
 };
 
-const Modal: React.ForwardRefRenderFunction<ModalHandle, Props> = (
-    { children, noCancelButton, onModalClose },
+const DrawerModal: React.ForwardRefRenderFunction<ModalHandle, Props> = (
+    { children, headerText, onModalClose },
     ref
 ) => {
     const [modalIsOpen, setModalIsOpen] = React.useState<boolean>(false);
@@ -61,39 +61,50 @@ const Modal: React.ForwardRefRenderFunction<ModalHandle, Props> = (
                 },
                 content: {
                     position: "absolute",
-                    inset: "auto",
+                    right: 0,
                     background:
                         (theme === "system" ? systemTheme : theme) === "dark"
-                            ? "#000"
+                            ? "#0f1217"
                             : "#fff",
                     overflow: "auto",
                     border: "none",
                     WebkitOverflowScrolling: "touch",
-                    borderRadius: "4px",
+                    borderRadius: "0",
                     outline: "none",
-                    padding: "20px",
-                    maxHeight: "60vh",
+                    height: "100%",
                 },
             }}
+            className="w-full md:w-[50vw] h-full p-5 pb-0 md:px-10"
             isOpen={modalIsOpen}
             onRequestClose={closeModal}
             contentLabel="Modal"
             ariaHideApp={true}
             preventScroll={true}
+            closeTimeoutMS={1000}
         >
-            <div className="flex flex-col text-chumBlack">
-                {!noCancelButton && (
-                    <div
-                        onClick={closeModal}
-                        className="bg-[#D9D9D94D]/30 active:scale-125 transition-transform duration-300 cursor-pointer p-3 rounded-full ml-auto"
-                    >
-                        <IoMdClose className="flex-shrink-0" />
+            <div className="flex flex-col relative h-full w-full">
+                <div>
+                    <div className="flex justify-between items-center">
+                        <h1 className="text-2xl font-semibold">{headerText}</h1>
+                        <div className="p-1 rounded-md active:ring-2 active:ring-gray-700 hover:bg-gray-300 transition-colors duration-200 inline-flex cursor-pointer">
+                            <IoMdClose
+                                onClick={closeModal}
+                                className="flex-shrink-0 text-3xl"
+                            />
+                        </div>
                     </div>
-                )}
-                {children}
+                    <hr className="mt-2" />
+                </div>
+
+                <div className="flex flex-col">{children}</div>
+
+                <div className="absolute bottom-0">
+                    <button>Cancel</button>
+                    <button>Add</button>
+                </div>
             </div>
         </ReactModal>
     );
 };
 
-export default React.forwardRef(Modal);
+export default React.forwardRef(DrawerModal);
