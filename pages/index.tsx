@@ -22,6 +22,7 @@ import React from "react";
 import Modal, { ModalHandle } from "../components/Modal/Modal";
 import ConnectModalContent from "../components/ConnectModalContent";
 import useMint from "../utils/hooks/useMint";
+import useListItem from "../utils/hooks/useListItem";
 
 const Home: NextPage = () => {
     const {
@@ -42,14 +43,16 @@ const Home: NextPage = () => {
         mintNtf,
     } = useMint();
 
-    const listItemModalRef = React.useRef<ModalHandle>(null);
-
-    const openListItem = () => {
-        listItemModalRef.current?.openModal();
-    };
-    const closeListItem = () => {
-        listItemModalRef.current?.closeModal();
-    };
+    const {
+        selectedNft,
+        setSelectedNft,
+        listItemModalRef,
+        openListItem,
+        price,
+        setPrice,
+        listingType,
+        setListingType,
+    } = useListItem();
 
     const { contract } = useContract(
         process.env.NEXT_PUBLIC_MARKETPLACE_CONTRACT,
@@ -60,7 +63,7 @@ const Home: NextPage = () => {
         useActiveListings(contract);
 
     const handleCreateListing = async () => {
-        console.log("handleCreateListing");
+        console.log({ selectedNft, price, listingType });
     };
 
     return (
@@ -179,7 +182,12 @@ const Home: NextPage = () => {
                 successBtnText={"Create Listing"}
                 onSuccessClick={handleCreateListing}
             >
-                <ListItem />
+                <ListItem
+                    selectedNft={selectedNft}
+                    setSelectedNft={setSelectedNft}
+                    setPrice={setPrice}
+                    setListingType={setListingType}
+                />
             </DrawerModal>
         </>
     );

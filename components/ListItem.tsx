@@ -8,11 +8,23 @@ import { NFT } from "@thirdweb-dev/sdk";
 import React from "react";
 import { ListingSkeleton, NftSkeleton } from ".";
 
-type Props = {};
+type ListingType = "directListing" | "auctionListing";
 
-function ListItem({}: Props) {
-    const [selectedNft, setSelectedNft] = React.useState<NFT | null>(null);
+type Props = {
+    selectedNft: NFT | null;
+    setSelectedNft: (nft: NFT) => void;
+    setListingType: React.Dispatch<
+        React.SetStateAction<"directListing" | "auctionListing" | null>
+    >;
+    setPrice: React.Dispatch<React.SetStateAction<string>>;
+};
 
+function ListItem({
+    selectedNft,
+    setSelectedNft,
+    setPrice,
+    setListingType,
+}: Props) {
     const address = useAddress();
 
     const { contract } = useContract(
@@ -55,7 +67,13 @@ function ListItem({}: Props) {
                             {nfts?.map((nft) => (
                                 <div
                                     onClick={() => setSelectedNft(nft)}
-                                    className="flex flex-col space-y-2 card min-w-fit border-2 bg-gray-100"
+                                    className={[
+                                        "flex flex-col space-y-2 card min-w-fit border-2 bg-gray-100",
+                                        selectedNft?.metadata.id ===
+                                        nft.metadata.id
+                                            ? "ring-4 ring-gray-600"
+                                            : "",
+                                    ].join(" ")}
                                     key={nft.metadata.id}
                                 >
                                     <MediaRenderer
@@ -74,6 +92,59 @@ function ListItem({}: Props) {
                     )}
                 </div>
             </div>
+
+            {selectedNft && (
+                <form>
+                    <div className="flex flex-col p-10">
+                        <div className="grid grid-cols-2 gap-5">
+                            <label
+                                htmlFor="directListing"
+                                className="border-r font-light"
+                            >
+                                Direct Listing/Fixed Price
+                            </label>
+                            <input
+                                type="radio"
+                                name="listingType"
+                                id="directListing"
+                                value="directListing"
+                                className="ml-auto h-10 w-10 cursor-pointer"
+                                onChange={() => setListingType("directListing")}
+                            />
+
+                            <label
+                                htmlFor="auctionListing"
+                                className="border-r font-light"
+                            >
+                                Auction
+                            </label>
+                            <input
+                                type="radio"
+                                name="listingType"
+                                id="auctionListing"
+                                value="auctionListing"
+                                className="ml-auto h-10 w-10 cursor-pointer"
+                                onChange={() =>
+                                    setListingType("auctionListing")
+                                }
+                            />
+
+                            <label
+                                htmlFor="price"
+                                className="border-r font-light"
+                            >
+                                Price
+                            </label>
+                            <input
+                                type="text"
+                                placeholder="0.05"
+                                className="outline-none bg-gray-100 p-5 dark:text-ebayDark"
+                                onChange={(e) => setPrice(e.target.value)}
+                            />
+                        </div>
+                    </div>
+                </form>
+            )}
         </main>
     );
 }
