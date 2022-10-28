@@ -10,7 +10,7 @@ import { ListingSkeleton, NftSkeleton } from ".";
 
 type Props = {
     selectedNft: NFT | null;
-    setSelectedNft: (nft: NFT) => void;
+    setSelectedNft: React.Dispatch<React.SetStateAction<NFT | null>>;
     setListingType: React.Dispatch<
         React.SetStateAction<"directListing" | "auctionListing" | null>
     >;
@@ -56,7 +56,17 @@ function ListItem({
                         <>
                             {nfts?.map((nft) => (
                                 <div
-                                    onClick={() => setSelectedNft(nft)}
+                                    onClick={() => {
+                                        if (
+                                            selectedNft &&
+                                            selectedNft?.metadata.id ===
+                                                nft.metadata.id
+                                        ) {
+                                            setSelectedNft(null);
+                                        } else {
+                                            setSelectedNft(nft);
+                                        }
+                                    }}
                                     className={[
                                         "flex flex-col space-y-2 card min-w-fit border-2 bg-gray-100",
                                         selectedNft?.metadata.id ===
