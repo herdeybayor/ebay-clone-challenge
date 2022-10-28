@@ -4,7 +4,7 @@ type Props = {};
 
 function Listing({}: Props) {
     return (
-        <div className="border-2 w-full aspect-square p-5 rounded-lg flex flex-col space-y-3 animate-pulse">
+        <div className="border-2 w-full h-max sm:aspect-square p-5 rounded-lg flex flex-col space-y-3 animate-pulse">
             <div className="bg-gray-300 rounded-lg w-1/2 aspect-square animate-pulse flex justify-center items-center self-center">
                 <svg
                     className="w-12 h-12 text-gray-200 dark:text-gray-600"
