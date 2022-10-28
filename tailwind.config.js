@@ -6,7 +6,11 @@ module.exports = {
     ],
     darkMode: "class", // or 'media' or 'class'
     theme: {
-        extend: {},
+        extend: {
+            colors: {
+                ebayDark: "#0f1217",
+            },
+        },
     },
     plugins: [],
 };

@@ -85,22 +85,27 @@ const DrawerModal: React.ForwardRefRenderFunction<ModalHandle, Props> = (
             closeTimeoutMS={1000}
         >
             <div className="flex flex-col justify-between relative h-full w-full">
-                <div>
-                    <div className="flex justify-between items-center">
-                        <h1 className="text-2xl font-semibold">{headerText}</h1>
-                        <div className="p-1 rounded-md active:ring-2 active:ring-gray-700 hover:bg-gray-300 transition-colors duration-200 inline-flex cursor-pointer">
-                            <IoMdClose
-                                onClick={closeModal}
-                                className="flex-shrink-0 text-3xl"
-                            />
+                <div className="-mt-5 -mx-5 md:-mx-10 h-[calc(100vh-78px)] overflow-y-auto">
+                    <div className="sticky top-0 bg-white dark:bg-ebayDark">
+                        <div className="flex justify-between items-center px-5 md:px-10 pt-5">
+                            <h1 className="text-2xl font-semibold">
+                                {headerText}
+                            </h1>
+                            <div className="p-1 rounded-md active:ring-2 active:ring-gray-700 hover:bg-gray-300 transition-colors duration-200 inline-flex cursor-pointer">
+                                <IoMdClose
+                                    onClick={closeModal}
+                                    className="flex-shrink-0 text-3xl"
+                                />
+                            </div>
                         </div>
+                        <hr className="mt-2" />
                     </div>
-                    <hr className="mt-2" />
+
+                    <div className="flex flex-col flex-1 p-5 md:px-10">
+                        {children}
+                    </div>
                 </div>
-
-                <div className="flex flex-col flex-1">{children}</div>
-
-                <div className="absolute left-0 bottom-0 border-t w-[calc(100%+40px)] md:w-[calc(100%+80px)] -mx-5 md:-mx-10 px-5 md:px-10 py-4 flex justify-end space-x-5">
+                <div className="sticky left-0 bottom-0 border-t w-[calc(100%+40px)] md:w-[calc(100%+80px)] -mx-5 md:-mx-10 px-5 md:px-10 py-4 flex justify-end space-x-5 bg-white dark:bg-ebayDark">
                     <button
                         onClick={closeModal}
                         className="outline-none px-5 font-medium border-2 border-blue-500 py-2 rounded-md text-blue-500 bg-transparent hover:bg-blue-500 hover:text-white transition-colors duration-200"
