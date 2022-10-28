@@ -21,33 +21,29 @@ import { useTheme } from "next-themes";
 import React from "react";
 import Modal, { ModalHandle } from "../components/Modal/Modal";
 import ConnectModalContent from "../components/ConnectModalContent";
+import useMint from "../utils/hooks/useMint";
 
 const Home: NextPage = () => {
-    const { theme, systemTheme } = useTheme();
+    const {
+        address,
+        name,
+        setName,
+        image,
+        setImage,
+        description,
+        setDescription,
+        isMinting,
+        openAddInventory,
+        closeAddInventory,
+        openConnectModal,
+        closeConnectModal,
+        connectModalRef,
+        inventoryModalRef,
+        mintNtf,
+    } = useMint();
 
-    const [image, setImage] = React.useState<File | null>(null);
-    const [name, setName] = React.useState<string>("");
-    const [description, setDescription] = React.useState<string>("");
-    const [isMinting, setIsMinting] = React.useState<boolean>(false);
-
-    const address = useAddress();
-
-    const connectModalRef = React.useRef<ModalHandle>(null);
-    const inventoryModalRef = React.useRef<ModalHandle>(null);
     const listItemModalRef = React.useRef<ModalHandle>(null);
 
-    const openConnectModal = () => {
-        connectModalRef.current?.openModal();
-    };
-    const closeConnectModal = () => {
-        connectModalRef.current?.closeModal();
-    };
-    const openAddInventory = () => {
-        inventoryModalRef.current?.openModal();
-    };
-    const closeAddInventory = () => {
-        inventoryModalRef.current?.closeModal();
-    };
     const openListItem = () => {
         listItemModalRef.current?.openModal();
     };
@@ -60,53 +56,11 @@ const Home: NextPage = () => {
         "marketplace"
     );
 
-    const { contract: collectionContract } = useContract(
-        process.env.NEXT_PUBLIC_COLLECTION_CONTRACT,
-        "nft-collection"
-    );
-
     const { data: listings, isLoading: loadingListings } =
         useActiveListings(contract);
 
-    const mintNtf = async () => {
-        if (!collectionContract || !address) {
-            closeAddInventory();
-            openConnectModal();
-            return;
-        }
-
-        // Toasts
-        if (!image) return toast.error("Please upload an image");
-        if (!name) return toast.error("Please enter a name");
-        if (!description) return toast.error("Please enter a description");
-
-        toast.loading("Minting NFT...");
-        setIsMinting(true);
-
-        const metadata = {
-            name,
-            description,
-            image: image,
-        };
-
-        try {
-            const tx = await collectionContract.mintTo(address, metadata);
-
-            const receipt = tx.receipt;
-            const tokenId = tx.id;
-            const nft = await tx.data();
-
-            console.log(receipt, tokenId, nft);
-            setIsMinting(false);
-            toast.dismiss();
-            toast.success("Successfully minted NFT");
-            closeAddInventory();
-        } catch (error: any) {
-            toast.dismiss();
-            setIsMinting(false);
-            toast.error(error.reason);
-            console.error({ error });
-        }
+    const handleCreateListing = async () => {
+        console.log("handleCreateListing");
     };
 
     return (
@@ -222,7 +176,8 @@ const Home: NextPage = () => {
             <DrawerModal
                 headerText="List an Item"
                 ref={listItemModalRef}
-                successBtnText={"List Item"}
+                successBtnText={"Create Listing"}
+                onSuccessClick={handleCreateListing}
             >
                 <ListItem />
             </DrawerModal>
