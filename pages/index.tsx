@@ -41,30 +41,34 @@ const Home: NextPage = () => {
         connectModalRef,
         inventoryModalRef,
         mintNtf,
+        nfts,
+        isLoadingNft,
+        refetchNtfs,
     } = useMint();
-
-    const {
-        selectedNft,
-        setSelectedNft,
-        listItemModalRef,
-        openListItem,
-        price,
-        setPrice,
-        listingType,
-        setListingType,
-    } = useListItem();
 
     const { contract } = useContract(
         process.env.NEXT_PUBLIC_MARKETPLACE_CONTRACT,
         "marketplace"
     );
 
-    const { data: listings, isLoading: loadingListings } =
-        useActiveListings(contract);
+    const {
+        data: listings,
+        isLoading: loadingListings,
+        refetch: refetchListing,
+    } = useActiveListings(contract);
 
-    const handleCreateListing = async () => {
-        console.log({ selectedNft, price, listingType });
-    };
+    const {
+        selectedNft,
+        setSelectedNft,
+        listItemModalRef,
+        openListItem,
+        setPrice,
+        setListingType,
+        handleCreateListing,
+        isDirectListingLoading,
+        isAuctionListingLoading,
+        networkMismatch,
+    } = useListItem({ refetchListing });
 
     return (
         <>
@@ -177,12 +181,18 @@ const Home: NextPage = () => {
 
             {/* List Item Modal */}
             <DrawerModal
+                isLoading={isDirectListingLoading || isAuctionListingLoading}
                 headerText="List an Item"
                 ref={listItemModalRef}
-                successBtnText={"Create Listing"}
+                successBtnText={
+                    networkMismatch ? "Switch Network" : "Create Listing"
+                }
                 onSuccessClick={handleCreateListing}
             >
                 <ListItem
+                    nfts={nfts}
+                    isLoadingNft={isLoadingNft}
+                    refetchNtfs={refetchNtfs}
                     selectedNft={selectedNft}
                     setSelectedNft={setSelectedNft}
                     setPrice={setPrice}

@@ -8,8 +8,6 @@ import { NFT } from "@thirdweb-dev/sdk";
 import React from "react";
 import { ListingSkeleton, NftSkeleton } from ".";
 
-type ListingType = "directListing" | "auctionListing";
-
 type Props = {
     selectedNft: NFT | null;
     setSelectedNft: (nft: NFT) => void;
@@ -17,6 +15,9 @@ type Props = {
         React.SetStateAction<"directListing" | "auctionListing" | null>
     >;
     setPrice: React.Dispatch<React.SetStateAction<string>>;
+    nfts: NFT[] | undefined;
+    isLoadingNft: boolean;
+    refetchNtfs: () => void;
 };
 
 function ListItem({
@@ -24,24 +25,13 @@ function ListItem({
     setSelectedNft,
     setPrice,
     setListingType,
+    nfts,
+    isLoadingNft,
+    refetchNtfs,
 }: Props) {
-    const address = useAddress();
-
-    const { contract } = useContract(
-        process.env.NEXT_PUBLIC_MARKETPLACE_CONTRACT,
-        "marketplace"
-    );
-
-    const { contract: collectionContract } = useContract(
-        process.env.NEXT_PUBLIC_COLLECTION_CONTRACT,
-        "nft-collection"
-    );
-
-    const { data: nfts, isLoading: isLoadingNft } = useOwnedNFTs(
-        collectionContract,
-        address
-    );
-
+    React.useEffect(() => {
+        refetchNtfs();
+    }, []);
     return (
         <main className="overflow-hidden">
             <h5 className="font-medium text-xl">
@@ -71,7 +61,7 @@ function ListItem({
                                         "flex flex-col space-y-2 card min-w-fit border-2 bg-gray-100",
                                         selectedNft?.metadata.id ===
                                         nft.metadata.id
-                                            ? "ring-4 ring-gray-600"
+                                            ? "ring-4 ring-gray-600 dark:ring-white"
                                             : "",
                                     ].join(" ")}
                                     key={nft.metadata.id}

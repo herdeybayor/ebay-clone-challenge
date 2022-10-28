@@ -1,4 +1,4 @@
-import { useAddress, useContract } from "@thirdweb-dev/react";
+import { useAddress, useContract, useOwnedNFTs } from "@thirdweb-dev/react";
 import React from "react";
 import { toast } from "react-toastify";
 
@@ -33,6 +33,12 @@ function useMint() {
         "nft-collection"
     );
 
+    const {
+        data: nfts,
+        isLoading: isLoadingNft,
+        refetch: refetchNtfs,
+    } = useOwnedNFTs(collectionContract, address);
+
     const mintNtf = async () => {
         if (!collectionContract || !address) {
             closeAddInventory();
@@ -63,6 +69,7 @@ function useMint() {
 
             console.log(receipt, tokenId, nft);
             setIsMinting(false);
+            refetchNtfs();
             toast.dismiss();
             toast.success("Successfully minted NFT");
             closeAddInventory();
@@ -89,6 +96,9 @@ function useMint() {
         inventoryModalRef,
         connectModalRef,
         mintNtf,
+        nfts,
+        isLoadingNft,
+        refetchNtfs,
     };
 }
 
