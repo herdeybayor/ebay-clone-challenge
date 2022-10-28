@@ -9,7 +9,7 @@ import { Metronome } from "@uiball/loaders";
 import { BanknotesIcon, ClockIcon } from "@heroicons/react/24/outline";
 import { toast } from "react-toastify";
 
-import { DrawerModal, Header, MintItem } from "../components";
+import { DrawerModal, Header, ListItem, MintItem } from "../components";
 import { ListingType } from "@thirdweb-dev/sdk";
 import { useTheme } from "next-themes";
 import React from "react";
@@ -27,22 +27,26 @@ const Home: NextPage = () => {
     const address = useAddress();
 
     const connectModalRef = React.useRef<ModalHandle>(null);
-    const drawerModalRef = React.useRef<ModalHandle>(null);
+    const inventoryModalRef = React.useRef<ModalHandle>(null);
+    const listItemModalRef = React.useRef<ModalHandle>(null);
 
     const openConnectModal = () => {
         connectModalRef.current?.openModal();
     };
-
     const closeConnectModal = () => {
         connectModalRef.current?.closeModal();
     };
-
     const openAddInventory = () => {
-        drawerModalRef.current?.openModal();
+        inventoryModalRef.current?.openModal();
     };
-
     const closeAddInventory = () => {
-        drawerModalRef.current?.closeModal();
+        inventoryModalRef.current?.closeModal();
+    };
+    const openListItem = () => {
+        listItemModalRef.current?.openModal();
+    };
+    const closeListItem = () => {
+        listItemModalRef.current?.closeModal();
     };
 
     const { contract } = useContract(
@@ -106,6 +110,7 @@ const Home: NextPage = () => {
                     address={address}
                     openConnectModal={openConnectModal}
                     openAddInventory={openAddInventory}
+                    openListItem={openListItem}
                 />
 
                 <main className="max-w-6xl mx-auto p-2">
@@ -197,11 +202,11 @@ const Home: NextPage = () => {
                 />
             </Modal>
 
-            {/* Drawer Modal */}
+            {/* Inventory Modal */}
             <DrawerModal
                 isLoading={isMinting}
                 headerText="Add an Item to the Marketplace"
-                ref={drawerModalRef}
+                ref={inventoryModalRef}
                 successBtnText={"Add/Mint Item"}
                 onSuccessClick={mintNtf}
             >
@@ -213,6 +218,15 @@ const Home: NextPage = () => {
                     description={description}
                     setDescription={setDescription}
                 />
+            </DrawerModal>
+
+            {/* List Item Modal */}
+            <DrawerModal
+                headerText="List an Item"
+                ref={listItemModalRef}
+                successBtnText={"List Item"}
+            >
+                <ListItem />
             </DrawerModal>
         </>
     );

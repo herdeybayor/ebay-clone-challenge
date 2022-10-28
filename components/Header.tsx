@@ -17,9 +17,15 @@ type Props = {
     address: string | undefined;
     openConnectModal: () => void;
     openAddInventory: () => void;
+    openListItem: () => void;
 };
 
-function Header({ address, openConnectModal, openAddInventory }: Props) {
+function Header({
+    address,
+    openConnectModal,
+    openAddInventory,
+    openListItem,
+}: Props) {
     return (
         <div className="max-w-6xl mx-auto p-2">
             <nav className="flex justify-between items-center">
@@ -95,11 +101,15 @@ function Header({ address, openConnectModal, openAddInventory }: Props) {
                 <button className="hidden md:inline-flex bg-blue-600 text-white px-5 md:px-10 py-2 border-2 border-blue-600">
                     Search
                 </button>
-                <Link href="/create">
-                    <button className="hidden md:inline-flex bg-transparent text-blue-600 px-5 md:px-10 py-2 border-2 border-blue-600 hover:bg-blue-600/50 hover:text-white transition-colors duration-200">
-                        List Item
-                    </button>
-                </Link>
+                <button
+                    onClick={() => {
+                        if (!address) return openConnectModal();
+                        openListItem();
+                    }}
+                    className="inline-flex bg-transparent text-blue-600 px-5 md:px-10 py-2 border-2 border-blue-600 hover:bg-blue-600/50 hover:text-white transition-colors duration-200"
+                >
+                    List Item
+                </button>
             </section>
             <hr />
 
