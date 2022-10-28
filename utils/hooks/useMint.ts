@@ -61,24 +61,33 @@ function useMint() {
         };
 
         try {
-            const tx = await collectionContract.mintTo(address, metadata);
+            await collectionContract.roles.verify(["minter"], address);
+            try {
+                const tx = await collectionContract.mintTo(address, metadata);
 
-            const receipt = tx.receipt;
-            const tokenId = tx.id;
-            const nft = await tx.data();
+                const receipt = tx.receipt;
+                const tokenId = tx.id;
+                const nft = await tx.data();
 
-            setIsMinting(false);
-            refetchNtfs();
+                setIsMinting(false);
+                refetchNtfs();
+                toast.dismiss();
+                toast.success("Successfully minted NFT");
+                closeAddInventory();
+            } catch (error: any) {
+                toast.dismiss();
+                setIsMinting(false);
+                toast.error(error.reason);
+                console.error({ error });
+            }
+        } catch (error) {
             toast.dismiss();
-            toast.success("Successfully minted NFT");
-            closeAddInventory();
-        } catch (error: any) {
-            toast.dismiss();
             setIsMinting(false);
-            toast.error(error.reason);
+            toast.error("You are not authorized to mint NFTs");
             console.error({ error });
         }
     };
+
     return {
         address,
         name,
