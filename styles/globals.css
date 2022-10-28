@@ -38,16 +38,16 @@
     opacity: 0;
 }
 
-.ReactModal__Content {
+.drawer.ReactModal__Content {
     transform: translateX(100%);
     transition: transform 500ms ease-in-out;
 }
 
-.ReactModal__Content--after-open {
+.drawer.ReactModal__Content--after-open {
     transform: translateX(0);
 }
 
-.ReactModal__Content--before-close {
+.drawer.ReactModal__Content--before-close {
     transform: translateX(100%);
 }
 

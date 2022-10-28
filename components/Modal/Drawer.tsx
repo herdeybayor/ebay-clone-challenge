@@ -8,6 +8,8 @@ interface Props {
     headerText: string;
     children: React.ReactNode;
     onModalClose?: () => void;
+    onSuccessClick?: () => void;
+    successBtnText?: string;
 }
 
 export type ModalHandle = {
@@ -16,7 +18,7 @@ export type ModalHandle = {
 };
 
 const DrawerModal: React.ForwardRefRenderFunction<ModalHandle, Props> = (
-    { children, headerText, onModalClose },
+    { children, headerText, onModalClose, onSuccessClick, successBtnText },
     ref
 ) => {
     const [modalIsOpen, setModalIsOpen] = React.useState<boolean>(false);
@@ -74,7 +76,7 @@ const DrawerModal: React.ForwardRefRenderFunction<ModalHandle, Props> = (
                     height: "100%",
                 },
             }}
-            className="w-full md:w-[50vw] h-full p-5 pb-0 md:px-10"
+            className="w-full md:w-[50vw] h-full p-5 pb-0 md:px-10 drawer"
             isOpen={modalIsOpen}
             onRequestClose={closeModal}
             contentLabel="Modal"
@@ -82,7 +84,7 @@ const DrawerModal: React.ForwardRefRenderFunction<ModalHandle, Props> = (
             preventScroll={true}
             closeTimeoutMS={1000}
         >
-            <div className="flex flex-col relative h-full w-full">
+            <div className="flex flex-col justify-between relative h-full w-full">
                 <div>
                     <div className="flex justify-between items-center">
                         <h1 className="text-2xl font-semibold">{headerText}</h1>
@@ -96,11 +98,23 @@ const DrawerModal: React.ForwardRefRenderFunction<ModalHandle, Props> = (
                     <hr className="mt-2" />
                 </div>
 
-                <div className="flex flex-col">{children}</div>
+                <div className="flex flex-col flex-1">{children}</div>
 
-                <div className="absolute bottom-0">
-                    <button>Cancel</button>
-                    <button>Add</button>
+                <div className="absolute left-0 bottom-0 border-t w-[calc(100%+40px)] md:w-[calc(100%+80px)] -mx-5 md:-mx-10 px-5 md:px-10 py-4 flex justify-end space-x-5">
+                    <button
+                        onClick={closeModal}
+                        className="outline-none px-5 font-medium border-2 border-blue-500 py-2 rounded-md text-blue-500 bg-transparent hover:bg-blue-500 hover:text-white transition-colors duration-200"
+                    >
+                        Cancel
+                    </button>
+                    <button
+                        onClick={() => {
+                            onSuccessClick?.();
+                        }}
+                        className="outline-none px-5 font-medium border-2 border-blue-500 py-2 rounded-md text-white bg-blue-500"
+                    >
+                        {successBtnText || "Add"}
+                    </button>
                 </div>
             </div>
         </ReactModal>
