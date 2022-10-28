@@ -9,7 +9,13 @@ import { Metronome } from "@uiball/loaders";
 import { BanknotesIcon, ClockIcon } from "@heroicons/react/24/outline";
 import { toast } from "react-toastify";
 
-import { DrawerModal, Header, ListItem, MintItem } from "../components";
+import {
+    DrawerModal,
+    Header,
+    ListItem,
+    MintItem,
+    NftSkeleton,
+} from "../components";
 import { ListingType } from "@thirdweb-dev/sdk";
 import { useTheme } from "next-themes";
 import React from "react";
@@ -115,21 +121,13 @@ const Home: NextPage = () => {
 
                 <main className="max-w-6xl mx-auto p-2">
                     {loadingListings ? (
-                        <div className="flex flex-col items-center justify-center mt-10">
-                            <Metronome
-                                size={80}
-                                speed={1.6}
-                                color={
-                                    (theme === "system"
-                                        ? systemTheme
-                                        : theme) === "dark"
-                                        ? "white"
-                                        : "black"
-                                }
-                            />
-                            <h4 className="font-semibold text-xl text-gray-800 dark:text-white/80 animate-pulse">
-                                Loading listings...
-                            </h4>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mx-5 lg:mx-auto">
+                            {/* Skeleton Loading */}
+                            {Array(8)
+                                .fill(0)
+                                .map((_, index) => (
+                                    <NftSkeleton key={index} />
+                                ))}
                         </div>
                     ) : (
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mx-5 lg:mx-auto">

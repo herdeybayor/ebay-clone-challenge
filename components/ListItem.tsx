@@ -6,6 +6,7 @@ import {
 } from "@thirdweb-dev/react";
 import { NFT } from "@thirdweb-dev/sdk";
 import React from "react";
+import { ListingSkeleton, NftSkeleton } from ".";
 
 type Props = {};
 
@@ -46,14 +47,7 @@ function ListItem({}: Props) {
                             {Array(5)
                                 .fill(0)
                                 .map((_, i) => (
-                                    <div
-                                        key={i}
-                                        className="flex flex-col space-y-2 w-56 flex-shrink-0 border-2 p-5 rounded-lg animate-pulse"
-                                    >
-                                        <div className="h-36 w-full rounded-lg bg-gray-200 animate-pulse"></div>
-                                        <div className="bg-gray-200 h-2.5 rounded-full w-full animate-pulse"></div>
-                                        <div className="bg-gray-200 h-2 rounded-full w-full animate-pulse"></div>
-                                    </div>
+                                    <ListingSkeleton />
                                 ))}
                         </>
                     ) : (
