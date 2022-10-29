@@ -72,10 +72,10 @@ function useMint() {
             toast.dismiss();
             toast.success("Successfully minted NFT");
             closeAddInventory();
-        } catch (error: any) {
+        } catch (error) {
             toast.dismiss();
             setIsMinting(false);
-            toast.error(error.reason);
+            toast.error("Error minting NFT");
             console.error({ error });
         }
     };

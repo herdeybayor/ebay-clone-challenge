@@ -186,7 +186,7 @@ function ListingPage({}: Props) {
                         },
                         onError: (error: any, variable, context) => {
                             toast.dismiss();
-                            toast.error(error.message || "Error making offer");
+                            toast.error("Error making offer");
                             console.log({ error, variable, context });
                         },
                     }
@@ -209,7 +209,7 @@ function ListingPage({}: Props) {
                         },
                         onError: (error: any, variable, context) => {
                             toast.dismiss();
-                            toast.error(error.message || "Error making bid");
+                            toast.error("Error making bid");
                             console.log({ error, variable, context });
                         },
                     }
@@ -249,7 +249,7 @@ function ListingPage({}: Props) {
                 },
                 onError: (error: any, variable, context) => {
                     toast.dismiss();
-                    toast.error(error.message || "Error accepting offer");
+                    toast.error("Error accepting offer");
                     console.log({ error, variable, context });
                 },
             }
