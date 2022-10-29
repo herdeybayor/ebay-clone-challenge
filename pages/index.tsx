@@ -12,7 +12,7 @@ const Home: NextPage = () => {
 
     return (
         <>
-            <div className="to-pink-500[0.35] dark:to-pink-500[0.25] bg-gradient-to-tr from-purple-500/[0.35] dark:from-purple-500/[0.15] min-h-screen">
+            <div className="to-pink-500[0.35] dark:to-pink-500[0.25] bg-gradient-to-tr from-purple-500/[0.35] dark:from-purple-500/[0.15] min-h-screen pb-20 md:pb-10">
                 <Header />
 
                 <main className="max-w-6xl mx-auto p-2">

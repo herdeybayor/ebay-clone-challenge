@@ -9,7 +9,7 @@ type Props = {
 function ListingCard({ children, active, noHover }: Props) {
     return (
         <div
-            className={`group min-w-fit relative cursor-pointer transition duration-500 ease-in-out ${
+            className={`group relative cursor-pointer transition duration-500 ease-in-out ${
                 noHover ? "" : "hover:scale-105"
             } ${active ? "scale-105" : "scale-100"}`}
         >
