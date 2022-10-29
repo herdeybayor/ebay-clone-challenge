@@ -12,6 +12,9 @@ import {
 import { SlMagnifier } from "react-icons/sl";
 
 import ThemeToggler from "./ThemeToggler";
+import { ConnectWallet } from "@thirdweb-dev/react";
+import useColorTheme from "../utils/useColorTheme";
+import { ColorMode } from "@thirdweb-dev/react/dist/declarations/src/evm/components/theme";
 
 type Props = {
     address: string | undefined;
@@ -26,11 +29,12 @@ function Header({
     openAddInventory,
     openListItem,
 }: Props) {
+    const theme = useColorTheme();
     return (
         <div className="max-w-6xl mx-auto p-2">
             <nav className="flex justify-between items-center">
                 <div className="flex items-center space-x-2 text-sm">
-                    <button
+                    {/* <button
                         onClick={openConnectModal}
                         className="connectWalletBtn"
                     >
@@ -39,7 +43,11 @@ function Header({
                                   -4
                               )}`
                             : "Connect Wallet"}
-                    </button>
+                    </button> */}
+                    <ConnectWallet
+                        colorMode={theme as ColorMode | undefined}
+                        accentColor="rgb(37 99 235)"
+                    />
 
                     <p className="headerLink">Daily Deals</p>
                     <p className="headerLink">Help & Contact</p>

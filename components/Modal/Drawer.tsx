@@ -3,6 +3,7 @@ import ReactModal from "react-modal";
 
 import { IoMdClose } from "react-icons/io";
 import { useTheme } from "next-themes";
+import useColorTheme from "../../utils/useColorTheme";
 
 interface Props {
     headerText: string;
@@ -53,7 +54,7 @@ const DrawerModal: React.ForwardRefRenderFunction<ModalHandle, Props> = (
         ReactModal.setAppElement("body");
     }, []);
 
-    const { theme, systemTheme } = useTheme();
+    const theme = useColorTheme();
 
     return (
         <ReactModal
@@ -62,9 +63,7 @@ const DrawerModal: React.ForwardRefRenderFunction<ModalHandle, Props> = (
                     position: "fixed",
                     inset: 0,
                     backgroundColor:
-                        (theme === "system" ? systemTheme : theme) === "dark"
-                            ? "#ffffff30"
-                            : "#00000050",
+                        theme === "dark" ? "#ffffff30" : "#00000050",
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
@@ -72,10 +71,7 @@ const DrawerModal: React.ForwardRefRenderFunction<ModalHandle, Props> = (
                 content: {
                     position: "absolute",
                     right: 0,
-                    background:
-                        (theme === "system" ? systemTheme : theme) === "dark"
-                            ? "#0f1217"
-                            : "#fff",
+                    background: theme === "dark" ? "#0f1217" : "#fff",
                     overflow: "auto",
                     border: "none",
                     WebkitOverflowScrolling: "touch",

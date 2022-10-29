@@ -4,6 +4,7 @@ import {
     useActiveListings,
     useContract,
     MediaRenderer,
+    ConnectWallet,
 } from "@thirdweb-dev/react";
 import { Metronome } from "@uiball/loaders";
 import { BanknotesIcon, ClockIcon } from "@heroicons/react/24/outline";
