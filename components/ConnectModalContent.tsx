@@ -35,6 +35,9 @@ function ConnectModalContent({ address, closeModal }: Props) {
                         <button
                             onClick={() => {
                                 connectWithMetaMask();
+                                setTimeout(() => {
+                                    closeModal();
+                                }, 1000);
                             }}
                             className="py-3 text-sm bg-blue-500 text-white rounded-md"
                         >
@@ -43,6 +46,9 @@ function ConnectModalContent({ address, closeModal }: Props) {
                         <button
                             onClick={() => {
                                 connectWithCoinbaseWallet();
+                                setTimeout(() => {
+                                    closeModal();
+                                }, 1000);
                             }}
                             className="py-3 text-sm bg-blue-500 text-white rounded-md"
                         >
@@ -51,6 +57,9 @@ function ConnectModalContent({ address, closeModal }: Props) {
                         <button
                             onClick={() => {
                                 connectWithWalletConnect();
+                                setTimeout(() => {
+                                    closeModal();
+                                }, 1000);
                             }}
                             className="py-3 text-sm bg-blue-500 text-white rounded-md"
                         >
