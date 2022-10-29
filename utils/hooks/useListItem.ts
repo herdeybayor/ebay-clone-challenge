@@ -8,7 +8,7 @@ import {
 } from "@thirdweb-dev/react";
 import { NATIVE_TOKEN_ADDRESS, NFT } from "@thirdweb-dev/sdk";
 import React from "react";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 
 import { ModalHandle } from "../../components/Modal/Modal";
 import network from "../network";

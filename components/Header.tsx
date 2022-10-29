@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 
 import {
     HiOutlineBell,

@@ -17,7 +17,7 @@ import { useRouter } from "next/router";
 import React from "react";
 import Countdown from "react-countdown";
 import { RaceBy, Ring } from "@uiball/loaders";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 
 import { ButtonNeon, Header, ListingCard } from "../../components";
 import network from "../../utils/network";

@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { ThemeProvider } from "next-themes";
 import { ThirdwebProvider } from "@thirdweb-dev/react";
-import { ToastContainer } from "react-toastify";
+import { Toaster } from "react-hot-toast";
 import "react-toastify/dist/ReactToastify.css";
 
 import network from "../utils/network";
@@ -18,7 +18,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                     <link rel="icon" href="/favicon.ico" />
                 </Head>
                 <Component {...pageProps} />
-                <ToastContainer />
+                <Toaster position="top-center" reverseOrder={false} />
             </ThemeProvider>
         </ThirdwebProvider>
     );
