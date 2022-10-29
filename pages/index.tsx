@@ -12,7 +12,7 @@ const Home: NextPage = () => {
 
     return (
         <>
-            <div className="to-blue-500[0.35] dark:to-blue-500[0.25] bg-gradient-to-tr from-purple-500/[0.35] dark:from-purple-500/[0.15] min-h-screen">
+            <div className="to-pink-500[0.35] dark:to-pink-500[0.25] bg-gradient-to-tr from-purple-500/[0.35] dark:from-purple-500/[0.15] min-h-screen">
                 <Header />
 
                 <main className="max-w-6xl mx-auto p-2">
@@ -33,8 +33,8 @@ const Home: NextPage = () => {
                                     href={`/listing/${listing.id}`}
                                 >
                                     <div className="group relative cursor-pointer transition duration-500 ease-in-out hover:scale-105">
-                                        <div className="animate-tilt group-hover:duration-600 absolute -inset-0.5 rounded-xl bg-gradient-to-r from-purple-600 to-blue-500 opacity-30 blur transition duration-1000 group-hover:opacity-80"></div>
-                                        <div className="relative flex items-center justify-between space-x-4 divide-gray-600 rounded-xl bg-gray-100 px-1.5 leading-none text-blue-200 transition duration-200 hover:text-purple-300 dark:bg-black sm:p-2">
+                                        <div className="animate-tilt group-hover:duration-600 absolute -inset-0.5 rounded-xl bg-gradient-to-r from-purple-600 to-pink-500 opacity-30 blur transition duration-1000 group-hover:opacity-80"></div>
+                                        <div className="relative flex items-center justify-between space-x-4 divide-gray-600 rounded-xl bg-gray-100 px-1.5 leading-none text-pink-200 transition duration-200 hover:text-purple-300 dark:bg-black sm:p-2">
                                             <div className="duration-600 w-full origin-top-left rounded-2xl p-3 sm:w-auto md:w-full">
                                                 <div className="flex flex-col">
                                                     <div className="flex-1 flex flex-col pb-2 items-center">

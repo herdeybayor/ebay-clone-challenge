@@ -87,7 +87,7 @@ function MintItem({
                         id="name"
                         name="name"
                         onChange={(e) => setName(e.target.value)}
-                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-pink-500 focus:border-pink-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-pink-500 dark:focus:border-pink-500"
                         placeholder="Sonny"
                         value={name}
                         required
@@ -105,7 +105,7 @@ function MintItem({
                         id="description"
                         name="description"
                         onChange={(e) => setDescription(e.target.value)}
-                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-pink-500 focus:border-pink-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-pink-500 dark:focus:border-pink-500"
                         placeholder="Sangha"
                         value={description}
                         required
@@ -113,7 +113,7 @@ function MintItem({
                 </div>
             </form>
 
-            <p className="text-xs flex space-x-1 items-center text-blue-600/80">
+            <p className="text-xs flex space-x-1 items-center text-pink-600/80">
                 <InformationCircleIcon
                     cursor={"pointer"}
                     title="By add ing an item to the marketplace, you're

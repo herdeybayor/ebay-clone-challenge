@@ -39,7 +39,7 @@ function ConnectModalContent({ address, closeModal }: Props) {
                                     closeModal();
                                 }, 1000);
                             }}
-                            className="py-3 text-sm bg-blue-500 text-white rounded-md"
+                            className="py-3 text-sm bg-pink-500 text-white rounded-md"
                         >
                             Connect Metamask
                         </button>
@@ -50,7 +50,7 @@ function ConnectModalContent({ address, closeModal }: Props) {
                                     closeModal();
                                 }, 1000);
                             }}
-                            className="py-3 text-sm bg-blue-500 text-white rounded-md"
+                            className="py-3 text-sm bg-pink-500 text-white rounded-md"
                         >
                             Connect Coinbase Wallet
                         </button>
@@ -61,7 +61,7 @@ function ConnectModalContent({ address, closeModal }: Props) {
                                     closeModal();
                                 }, 1000);
                             }}
-                            className="py-3 text-sm bg-blue-500 text-white rounded-md"
+                            className="py-3 text-sm bg-pink-500 text-white rounded-md"
                         >
                             Connect WalletConnect
                         </button>
@@ -74,7 +74,7 @@ function ConnectModalContent({ address, closeModal }: Props) {
                     </h4>
 
                     <button
-                        className="px-5 py-2 rounded border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition-colors duration-300 flex space-x-1 items-center"
+                        className="px-5 py-2 rounded border-2 border-pink-500 text-pink-500 hover:bg-pink-500 hover:text-white transition-colors duration-300 flex space-x-1 items-center"
                         onClick={() => {
                             disconnect();
                             closeModal();

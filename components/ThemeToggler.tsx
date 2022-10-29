@@ -35,7 +35,7 @@ function ThemeToggler() {
                 className="sr-only peer"
                 onChange={toggleTheme}
             />
-            <div className="w-14 h-7 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-gray-800 rounded-full peer dark:bg-gray-700 dark:border-gray-600 peer-checked:bg-gray-600"></div>
+            <div className="w-14 h-7 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-pink-300 dark:peer-focus:ring-gray-800 rounded-full peer dark:bg-gray-700 dark:border-gray-600 peer-checked:bg-gray-600"></div>
 
             <div className="peer-checked:translate-x-full peer-checked:border-white absolute top-0.5 left-[4px] bg-white border-gray-300 border rounded-full h-6 w-6 transition-all flex justify-center items-center">
                 {(theme === "system" ? systemTheme : theme) === "dark" ? (

@@ -4,7 +4,7 @@
 
 @layer components {
     .connectWalletBtn {
-        @apply bg-blue-500 text-white font-bold py-2 px-4 rounded cursor-pointer;
+        @apply bg-pink-500 text-white font-bold py-2 px-4 rounded cursor-pointer;
     }
 
     .headerLink {
@@ -12,7 +12,7 @@
     }
 
     .link {
-        @apply hover:text-blue-500 hover:underline cursor-pointer text-gray-600 dark:text-gray-300;
+        @apply hover:text-pink-500 hover:underline cursor-pointer text-gray-600 dark:text-gray-300;
     }
 
     .card {

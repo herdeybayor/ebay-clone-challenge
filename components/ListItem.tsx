@@ -138,7 +138,7 @@ function ListItem({
                             <input
                                 type="text"
                                 placeholder="0.05"
-                                className="outline-none bg-gray-100 p-5 dark:text-ebayDark"
+                                className="outline-none bg-gray-100 p-5 dark:text-ebayDark border"
                                 onChange={(e) => setPrice(e.target.value)}
                             />
                         </div>
