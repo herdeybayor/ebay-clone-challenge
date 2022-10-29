@@ -9,6 +9,10 @@ module.exports = {
         extend: {
             colors: {
                 ebayDark: "#0f1217",
+                primary: "#372948",
+                secondary: "#251B37",
+                accent: "#FFCACA",
+                accent2: "#FFECEF",
             },
         },
     },
