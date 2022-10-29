@@ -1,4 +1,5 @@
 import {
+    useActiveListings,
     useContract,
     useCreateAuctionListing,
     useCreateDirectListing,
@@ -12,11 +13,7 @@ import { toast } from "react-toastify";
 import { ModalHandle } from "../../components/Modal/Modal";
 import network from "../network";
 
-interface Props {
-    refetchListing: any;
-}
-
-function useListItem({ refetchListing }: Props) {
+function useListItem() {
     const [selectedNft, setSelectedNft] = React.useState<NFT | null>(null);
     const [listingType, setListingType] = React.useState<
         "directListing" | "auctionListing" | null
@@ -37,6 +34,12 @@ function useListItem({ refetchListing }: Props) {
         process.env.NEXT_PUBLIC_MARKETPLACE_CONTRACT,
         "marketplace"
     );
+
+    const {
+        data: listings,
+        isLoading: loadingListings,
+        refetch: refetchListing,
+    } = useActiveListings(contract);
 
     const networkMismatch = useNetworkMismatch();
     const [, switchNetwork] = useNetwork();
@@ -136,6 +139,9 @@ function useListItem({ refetchListing }: Props) {
         isDirectListingLoading,
         isAuctionListingLoading,
         networkMismatch,
+        listings,
+        loadingListings,
+        refetchListing,
     };
 }
 
