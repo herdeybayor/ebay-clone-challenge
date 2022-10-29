@@ -6,3 +6,4 @@ export { default as MintItem } from "./MintItem";
 export { default as ListItem } from "./ListItem";
 export { default as NftSkeleton } from "./Skeleton/Nft";
 export { default as ListingSkeleton } from "./Skeleton/Listing";
+export { default as ListingCard } from "./ListingCard";

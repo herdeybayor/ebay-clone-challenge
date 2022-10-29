@@ -6,7 +6,7 @@ import {
 } from "@thirdweb-dev/react";
 import { NFT } from "@thirdweb-dev/sdk";
 import React from "react";
-import { ListingSkeleton, NftSkeleton } from ".";
+import { ListingSkeleton, ListingCard } from ".";
 
 type Props = {
     selectedNft: NFT | null;
@@ -41,7 +41,7 @@ function ListItem({
                 Below you will find the Nft's you own in your wallet
             </p>
 
-            <div className="p-4 overflow-x-auto scrollbar-thin scrollbar-thumb-gray-900 scrollbar-track-gray-100">
+            <div className="p-5 overflow-x-auto scrollbar-thin scrollbar-thumb-pink-600 scrollbar-track-pink-100">
                 <div className="flex items-center space-x-6">
                     {isLoadingNft ? (
                         <>
@@ -55,38 +55,40 @@ function ListItem({
                     ) : (
                         <>
                             {nfts?.map((nft) => (
-                                <div
-                                    onClick={() => {
-                                        if (
-                                            selectedNft &&
-                                            selectedNft?.metadata.id ===
-                                                nft.metadata.id
-                                        ) {
-                                            setSelectedNft(null);
-                                        } else {
-                                            setSelectedNft(nft);
-                                        }
-                                    }}
-                                    className={[
-                                        "flex flex-col space-y-2 card min-w-fit border-2 bg-gray-100",
+                                <ListingCard
+                                    noHover
+                                    active={
                                         selectedNft?.metadata.id ===
                                         nft.metadata.id
-                                            ? "ring-4 ring-gray-600 dark:ring-white"
-                                            : "",
-                                    ].join(" ")}
+                                    }
                                     key={nft.metadata.id}
                                 >
-                                    <MediaRenderer
-                                        className="h-36 rounded-lg bg-gray-200"
-                                        src={nft.metadata.image}
-                                    />
-                                    <p className="truncate text-lg font-bold">
-                                        {nft.metadata.name}
-                                    </p>
-                                    <p className="truncate text-xs">
-                                        {nft.metadata.description}
-                                    </p>
-                                </div>
+                                    <div
+                                        onClick={() => {
+                                            if (
+                                                selectedNft &&
+                                                selectedNft?.metadata.id ===
+                                                    nft.metadata.id
+                                            ) {
+                                                setSelectedNft(null);
+                                            } else {
+                                                setSelectedNft(nft);
+                                            }
+                                        }}
+                                        className="flex flex-col bg-gray-100 -m-5 rounded-lg p-5"
+                                    >
+                                        <MediaRenderer
+                                            className="h-36 rounded-lg bg-gray-200"
+                                            src={nft.metadata.image}
+                                        />
+                                        <p className="truncate text-lg font-bold text-pink-500">
+                                            {nft.metadata.name}
+                                        </p>
+                                        <p className="truncate text-xs text-black dark-text-white">
+                                            {nft.metadata.description}
+                                        </p>
+                                    </div>
+                                </ListingCard>
                             ))}
                         </>
                     )}
