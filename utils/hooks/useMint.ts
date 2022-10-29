@@ -42,7 +42,7 @@ function useMint() {
     const mintNtf = async () => {
         if (!collectionContract || !address) {
             closeAddInventory();
-            openConnectModal();
+            toast.error("Please connect your wallet");
             return;
         }
 

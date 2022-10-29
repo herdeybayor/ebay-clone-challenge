@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { toast } from "react-toastify";
 
 import {
     HiOutlineBell,
@@ -111,7 +112,7 @@ function Header({
                 </button>
                 <button
                     onClick={() => {
-                        if (!address) return openConnectModal();
+                        if (!address) return toast.error("Connect Wallet");
                         openListItem();
                     }}
                     className="inline-flex bg-transparent text-blue-600 px-5 md:px-10 py-2 border-2 border-blue-600 hover:bg-blue-600/50 hover:text-white transition-colors duration-200"
