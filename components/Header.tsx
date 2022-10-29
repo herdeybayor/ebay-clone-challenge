@@ -72,10 +72,13 @@ function Header({}: Props) {
                               )}`
                             : "Connect Wallet"}
                     </button> */}
-                        <ConnectWallet
-                            colorMode={theme as ColorMode | undefined}
-                            accentColor="#372948"
-                        />
+                        <div className="group relative">
+                            <div className="animate-tilt group-hover:duration-600 absolute -inset-0.5 rounded-lg bg-gradient-to-r from-purple-600 to-blue-500 opacity-30 blur transition duration-1000 group-hover:opacity-100"></div>
+                            <ConnectWallet
+                                className="relative flex items-center space-x-4 divide-gray-600 rounded-lg bg-white px-7 py-4 leading-none text-black transition duration-200 hover:text-purple-500 dark:bg-black dark:text-white dark:hover:text-purple-300"
+                                colorMode={theme as ColorMode | undefined}
+                            />
+                        </div>
 
                         <p className="headerLink">Daily Deals</p>
                         <p className="headerLink">Help & Contact</p>
@@ -88,15 +91,18 @@ function Header({}: Props) {
                         <p className="headerLink">Sell</p>
                         <p className="headerLink">Watchlist</p>
 
-                        <button
+                        <div
                             onClick={() => openAddInventory()}
-                            className="flex space-x-1 justify-center items-center bg-transparent text-blue-500 border-2 border-blue-500 hover:bg-blue-500 hover:text-white p-2  md:px-3 md:py-1 transition-colors duration-200"
+                            className="group relative cursor-pointer"
                         >
-                            <span className="hidden md:inline-flex">
-                                Add to Inventory
-                            </span>
-                            <HiOutlinePlus className="text-base" />
-                        </button>
+                            <div className="animate-tilt group-hover:duration-600 absolute -inset-0.5 rounded-lg bg-gradient-to-r from-purple-600 to-blue-500 opacity-30 blur transition duration-1000 group-hover:opacity-100"></div>
+                            <div className="relative flex items-center space-x-4 divide-gray-600 rounded-lg bg-white px-7 py-4 leading-none text-black transition duration-200 hover:text-purple-500 dark:bg-black dark:text-white dark:hover:text-purple-300">
+                                <span className="hidden md:inline-flex">
+                                    Add to Inventory
+                                </span>
+                                <HiOutlinePlus className="text-base" />
+                            </div>
+                        </div>
 
                         <HiOutlineBell className="text-2xl cursor-pointer hover:scale-125 transition" />
                         <HiOutlineShoppingCart className="text-2xl cursor-pointer hover:scale-125 transition" />
@@ -174,7 +180,7 @@ function Header({}: Props) {
 
                         <button
                             type="submit"
-                            className="inline-flex items-center py-2.5 px-3 ml-2 text-sm font-medium text-white bg-primary rounded-lg border border-primary outline-none dark:bg-primary justify-center space-x-2"
+                            className="inline-flex items-center py-2.5 px-3 ml-2 text-sm font-medium text-white bg-pink-500 rounded-lg border border-pink-500 outline-none dark:bg-pink-500 justify-center space-x-2"
                         >
                             <svg
                                 aria-hidden="true"
@@ -202,7 +208,7 @@ function Header({}: Props) {
                             if (!address) return toast.error("Connect Wallet");
                             openListItem();
                         }}
-                        className="inline-flex bg-transparent text-primary px-5 md:px-5 py-2 border-2 border-primary hover:bg-primary hover:text-white transition-colors duration-200 rounded-lg"
+                        className="inline-flex bg-transparent text-pink-500 px-5 md:px-5 py-2 border-2 border-pink-500 hover:bg-pink-500 hover:text-white transition-colors duration-200 rounded-lg"
                     >
                         List Item
                     </button>
