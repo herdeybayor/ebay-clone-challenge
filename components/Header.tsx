@@ -18,7 +18,7 @@ import useColorTheme from "../utils/useColorTheme";
 import { ColorMode } from "@thirdweb-dev/react/dist/declarations/src/evm/components/theme";
 import useMint from "../utils/hooks/useMint";
 import useListItem from "../utils/hooks/useListItem";
-import { DrawerModal, MintItem, ListItem, ConnectModal } from ".";
+import { DrawerModal, MintItem, ListItem, ConnectModal, ButtonNeon } from ".";
 import ConnectModalContent from "./ConnectModalContent";
 
 type Props = {};
@@ -62,23 +62,12 @@ function Header({}: Props) {
             <div className="max-w-6xl mx-auto p-2">
                 <nav className="flex justify-between items-center">
                     <div className="flex items-center space-x-2 text-sm">
-                        {/* <button
-                        onClick={openConnectModal}
-                        className="connectWalletBtn"
-                    >
-                        {address
-                            ? `Hi, ${address.slice(0, 5)}...${address.slice(
-                                  -4
-                              )}`
-                            : "Connect Wallet"}
-                    </button> */}
-                        <div className="group relative">
-                            <div className="animate-tilt group-hover:duration-600 absolute -inset-0.5 rounded-lg bg-gradient-to-r from-purple-600 to-pink-500 opacity-30 blur transition duration-1000 group-hover:opacity-100"></div>
+                        <ButtonNeon>
                             <ConnectWallet
                                 className="relative flex items-center space-x-4 divide-gray-600 rounded-lg bg-white px-7 py-4 leading-none text-black transition duration-200 hover:text-purple-500 dark:bg-black dark:text-white dark:hover:text-purple-300"
                                 colorMode={theme as ColorMode | undefined}
                             />
-                        </div>
+                        </ButtonNeon>
 
                         <p className="headerLink">Daily Deals</p>
                         <p className="headerLink">Help & Contact</p>
