@@ -31,6 +31,7 @@ const Home: NextPage = () => {
                                 <Link
                                     key={listing.id}
                                     href={`/listing/${listing.id}`}
+                                    className="flex flex-col"
                                 >
                                     <ListingCard>
                                         <div className="flex flex-col p-5 space-y-5">
