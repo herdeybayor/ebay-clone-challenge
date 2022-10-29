@@ -96,11 +96,11 @@ function Header({}: Props) {
                             className="group relative cursor-pointer"
                         >
                             <div className="animate-tilt group-hover:duration-600 absolute -inset-0.5 rounded-lg bg-gradient-to-r from-purple-600 to-pink-500 opacity-30 blur transition duration-1000 group-hover:opacity-100"></div>
-                            <div className="relative flex items-center space-x-4 divide-gray-600 rounded-lg bg-white px-7 py-4 leading-none text-black transition duration-200 hover:text-purple-500 dark:bg-black dark:text-white dark:hover:text-purple-300">
-                                <span className="hidden md:inline-flex">
+                            <div className="relative flex items-center divide-gray-600 rounded-lg bg-white px-4 py-4 leading-none text-black transition duration-200 hover:text-purple-500 dark:bg-black dark:text-white dark:hover:text-purple-300 justify-center">
+                                <span className="hidden md:mr-4 md:inline-flex">
                                     Add to Inventory
                                 </span>
-                                <HiOutlinePlus className="text-base" />
+                                <HiOutlinePlus className="text-base font-bold" />
                             </div>
                         </div>
 

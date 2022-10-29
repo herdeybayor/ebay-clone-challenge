@@ -41,7 +41,7 @@ function ListItem({
                 Below you will find the Nft's you own in your wallet
             </p>
 
-            <div className="p-5 overflow-x-auto scrollbar-thin scrollbar-thumb-pink-600 scrollbar-track-pink-100">
+            <div className="p-5 py-8 overflow-x-auto scrollbar-thin scrollbar-thumb-pink-600 scrollbar-track-pink-100">
                 <div className="flex items-center space-x-6">
                     {isLoadingNft ? (
                         <>
