@@ -33,7 +33,7 @@ const Home: NextPage = () => {
                                     href={`/listing/${listing.id}`}
                                 >
                                     <ListingCard>
-                                        <div className="flex flex-col">
+                                        <div className="flex flex-col p-5">
                                             <div className="flex-1 flex flex-col pb-2 items-center">
                                                 <MediaRenderer
                                                     className="w-44"
