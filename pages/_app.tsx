@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <ThirdwebProvider desiredChainId={network}>
             <ThemeProvider enableSystem={true} attribute="class">
                 <Head>
-                    <title>Ebay Marketplace</title>
+                    <title>Alien Peace Marketplace</title>
                     <link rel="icon" href="/favicon.ico" />
                 </Head>
                 <Component {...pageProps} />

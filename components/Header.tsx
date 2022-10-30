@@ -101,11 +101,11 @@ function Header({}: Props) {
                 <hr className="mt-2" />
 
                 <section className="flex items-center space-x-2 py-5">
-                    <div className="h-16 w-16 sm:w-28 md:w-76 cursor-pointer flex-shrink-0 relative">
+                    <div className="h-16 w-16 cursor-pointer flex-shrink-0 relative">
                         <Link href="/">
                             <Image
-                                className="h-full w-full object-contain"
-                                src="https://links.papareact.com/bdb"
+                                className="h-full w-full object-contain position"
+                                src="/logo.png"
                                 width={100}
                                 height={100}
                                 alt="logo"
