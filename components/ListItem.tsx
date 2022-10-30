@@ -75,7 +75,7 @@ function ListItem({
                                                 setSelectedNft(nft);
                                             }
                                         }}
-                                        className="flex flex-col bg-gray-100 -m-5 rounded-lg p-5"
+                                        className="flex flex-col bg-gray-100 -m-5 rounded-lg p-5 w-48"
                                     >
                                         <MediaRenderer
                                             className="h-36 rounded-lg"
