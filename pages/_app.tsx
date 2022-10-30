@@ -39,7 +39,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                     />
                     <meta
                         property="og:image"
-                        content="https://ebay-clone-challenge.vercel.app/site_preview.png"
+                        content="https://ebay-clone-challenge.vercel.app/assets/site_preview.png"
                     />
                     <meta
                         property="og:updated_time"
@@ -63,7 +63,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                     />
                     <meta
                         property="twitter:image"
-                        content="https://ebay-clone-challenge.vercel.app/site_preview.png"
+                        content="https://ebay-clone-challenge.vercel.app/assets/site_preview.png"
                     />
                 </Head>
                 <Component {...pageProps} />
