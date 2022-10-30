@@ -78,7 +78,7 @@ function ListItem({
                                         className="flex flex-col bg-gray-100 -m-5 rounded-lg p-5"
                                     >
                                         <MediaRenderer
-                                            className="h-36 rounded-lg bg-gray-200 self-center"
+                                            className="h-36 rounded-lg bg-gray-200 self-center justify-self-start"
                                             src={nft.metadata.image}
                                         />
                                         <p className="truncate text-lg font-bold text-pink-500">
