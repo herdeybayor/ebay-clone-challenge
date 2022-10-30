@@ -90,7 +90,7 @@ const DrawerModal: React.ForwardRefRenderFunction<ModalHandle, Props> = (
         >
             <div className="flex flex-col justify-between relative h-full w-full">
                 <div className="-mt-5 -mx-5 md:-mx-10 h-[calc(100vh-78px)] overflow-y-auto">
-                    <div className="sticky top-0 bg-[#f7f1f1] dark:bg-ebayDark">
+                    <div className="sticky top-0 bg-[#f7f1f1] dark:bg-ebayDark z-10">
                         <div className="flex justify-between items-center px-5 md:px-10 pt-5">
                             <h1 className="text-2xl font-semibold text-pink-500">
                                 {headerText}
