@@ -85,7 +85,9 @@ function ListingPage({}: Props) {
         if (listing.type === ListingType.Auction) {
             return Number(minimumNextBid?.displayValue) === 0
                 ? "Enter Bid Amount"
-                : `min. ${minimumNextBid?.displayValue} ${minimumNextBid?.symbol}`;
+                : `min. ${minimumNextBid?.displayValue || "0"} ${
+                      minimumNextBid?.symbol || ""
+                  }`;
 
             // TODO: Add support for bid increments
         }
@@ -288,7 +290,7 @@ function ListingPage({}: Props) {
                             <h1 className="text-xl font-bold">
                                 {listing.asset.name}
                             </h1>
-                            <p className="text-gray-600">
+                            <p className="text-gray-600 dark:text-gray-200">
                                 {listing.asset.description}
                             </p>
                             <p className="flex items-center text-xs sm:text-base space-x-1">
