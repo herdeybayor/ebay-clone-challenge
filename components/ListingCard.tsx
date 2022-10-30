@@ -18,8 +18,8 @@ function ListingCard({ children, active, noHover }: Props) {
                     active ? "opacity-80" : ""
                 }`}
             ></div>
-            <div className="relative flex items-center justify-between space-x-4 divide-gray-600 rounded-xl bg-gray-100 px-1.5 leading-none text-pink-200 transition duration-200 hover:text-purple-300 dark:bg-black sm:p-2">
-                <div className="duration-600 w-full origin-top-left rounded-2xl p-3 sm:w-auto md:w-full">
+            <div className="relative block space-x-4 divide-gray-600 rounded-xl bg-gray-100 px-1.5 leading-none text-pink-200 transition duration-200 hover:text-purple-300 dark:bg-black sm:p-2">
+                <div className="duration-600 origin-top-left rounded-2xl p-3 sm:w-auto">
                     {children}
                 </div>
             </div>
